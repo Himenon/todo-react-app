@@ -9,3 +9,5 @@ export const initialize = () => {
 export const clear = () => {
   state.res = null;
 };
+
+export const addTodo = (title: string) => {};

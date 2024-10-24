@@ -8,6 +8,11 @@ export const useGenerateProps = (
 ): Widgets.TodoListProps => {
   const todoItems = TodoListStore.useTodoItems();
   return {
+    addTodoForm: {
+      onSubmit: (fields) => {
+        TodoListStore.addTodo(fields.title);
+      },
+    },
     items: todoItems.map((todoName): Widgets.TodoListProps["items"][number] => {
       return {
         title: todoName,
