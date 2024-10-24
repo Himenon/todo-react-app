@@ -18,7 +18,12 @@ export const AddTodoForm: React.FC<AddTodoFormProps> = (props) => {
   });
 
   const formProps: React.JSX.IntrinsicElements["form"] = {
-    onSubmit: methods.handleSubmit(onSubmit),
+    onSubmit: (event) => {
+      methods.handleSubmit((fields) => {
+        onSubmit(fields);
+        methods.reset();
+      })(event);
+    },
   };
 
   const inputProps: React.JSX.IntrinsicElements["input"] = {

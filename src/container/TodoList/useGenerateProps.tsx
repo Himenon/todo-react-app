@@ -10,15 +10,18 @@ export const useGenerateProps = (
   return {
     addTodoForm: {
       onSubmit: (fields) => {
-        TodoListStore.addTodo(fields.title);
+        TodoListStore.addTodo({
+          id: self.crypto.randomUUID().toString(),
+          title: fields.title,
+        });
       },
     },
-    items: todoItems.map((todoName): Widgets.TodoListProps["items"][number] => {
+    items: todoItems.map((todoItem): Widgets.TodoListProps["items"][number] => {
       return {
-        title: todoName,
+        title: todoItem.title,
         removeButton: {
           onClick: () => {
-            alert(`Remove: ${todoName}`);
+            TodoListStore.removeTodo(todoItem.id);
           },
         },
       };
