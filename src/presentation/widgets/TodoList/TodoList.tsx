@@ -12,11 +12,11 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
     <div>
       <h2>Todo List</h2>
       <AddTodoForm {...props.addTodoForm} />
-      <p>
+      <div>
         {props.items.map((item, index) => {
           return <TodoItem key={`${item.title}-${index}`} {...item} />;
         })}
-      </p>
+      </div>
     </div>
   );
 };

@@ -7,10 +7,10 @@ export type TodoItemProps = {
 
 export const TodoItem: React.FC<TodoItemProps> = (props) => {
   return (
-    <div>
-      <p>{props.title}</p>
+    <p>
+      <strong>{props.title}</strong>
       <button {...props.removeButton}>Remove</button>
-    </div>
+    </p>
   );
 };
 
