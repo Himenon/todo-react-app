@@ -10,7 +10,7 @@ export const TodoListFetchContainer: React.FC = () => {
   React.useEffect(() => {
     window.setTimeout(() => {
       TodoListStore.initialize();
-    }, 100);
+    }, 1000);
 
     return () => {
       TodoListStore.clear();
