@@ -1,22 +1,23 @@
 import * as React from "react";
 import { Widgets } from "../../presentation";
 
+import { TodoListStore } from "./store";
 import TodoListContainer from "./Container";
 
 export const TodoListFetchContainer: React.FC = () => {
-  const [status, setStatus] = React.useState<"READY" | "PENDING">("PENDING");
+  const initialized = TodoListStore.useInitialized();
 
   React.useEffect(() => {
     window.setTimeout(() => {
-      setStatus("READY");
+      TodoListStore.initialize();
     }, 100);
 
     return () => {
-      setStatus("PENDING");
+      TodoListStore.clear();
     };
   }, []);
 
-  if (status === "PENDING") {
+  if (!initialized) {
     return <Widgets.Loading type="TEXT" />;
   }
 
